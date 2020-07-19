@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Generic Bot Name</title>
+    <link rel="shortcut icon" href="./pics/favicon.png" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <link href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link href="css/bot.css" rel="stylesheet" />
+    <link href="css/MainPage.css" rel="stylesheet" />
+    <link href="css/Scroll.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans" />
+    <link rel="stylesheet" href="css/Font.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var divs = document.getElementsByClassName("bot-main");
+        var isCollapsed = true;
+        var isMobile = false;
+        var scheme;
+
+        function changeContent(current) {
+            //close menu when selected item
+            if (!isCollapsed) {
+                document.getElementById('mobile-menu').style.height = null;
+                document.getElementById('switcher').className = 'fas fa-bars collapser';
+                isCollapsed = !isCollapsed;
+            }
+            //remove color and display
+            var i;
+            for (i = 0; i < divs.length; i++) {
+                divs[i].style.display = 'none';
+                var list = document.getElementById(divs[i].id + '-list' + scheme);
+                list.style.color = null;
+            }
+            //set current item color and display
+            var currentItem = document.getElementById(current);
+            currentItem.style.display = 'block';
+            var currentList = document.getElementById(current + '-list' + scheme);
+            currentList.style.color = '#0CAADC';
+        }
+
+        function collapse() {
+            var menu = document.getElementById('mobile-menu');
+            if (isCollapsed === true) {
+                menu.style.height = '100vh';
+                document.getElementById('switcher').className = 'fas fa-times collapser';
+            }
+            else {
+                menu.style.height = null;
+                document.getElementById('switcher').className = 'fas fa-bars collapser';
+            }
+            isCollapsed = !isCollapsed;
+        }
+
+        window.onload = function () {
+            //determine if mobile 
+            var mobile_menu = document.getElementById('mobile-menu');
+            isMobile = window.getComputedStyle(mobile_menu).getPropertyValue('display') === 'none' ? false : true;
+            scheme = isMobile ? '-m' : '';
+
+            console.log('about' + '-list' + scheme);
+            //Set the default color and block
+            document.getElementById('about').style.display = 'block';
+            document.getElementById('about' + '-list' + scheme).style.color = '#0CAADC';
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <menu id="mobile-menu" class="bot-menu-mobile">
+        <div style="position: relative; width: 100%;">
+            <i class="fas fa-bars collapser" id="switcher" onclick="collapse()"></i>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fa fa-fire" aria-hidden="true"></i> Home</a></li>
+            <li id="about-list-m" onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
+            <li id="admin-list-m" onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
+            <li id="fun-list-m" onclick="changeContent('fun')"><i class="fas fa-smile"></i> Fun</li>
+            <li id="reddit-list-m" onclick="changeContent('reddit')"><i class="fab fa-reddit"></i> Reddit</li>
+            <li id="emotes-list-m" onclick="changeContent('emotes')"><i class='fas fa-icons'></i> Emotes</li>
+            <li id="crypto-list-m" onclick="changeContent('crypto')"><i class="fab fa-bitcoin"></i> Crypto</li>
+            <li id="other-list-m" onclick="changeContent('other')"><i class="far fa-paper-plane"></i> Other</li>
+          
+        </ul>
+    </menu>
+
+    <div class="bot-container">
+        <menu class="bot-menu">
+            <ul>
+                <li><a href="index.html"><i class="fa fa-fire" aria-hidden="true"></i> Home</a></li>
+                <li id="about-list" onclick="changeContent('about')"><i class="fab fa-discord"></i> About</li>
+                <li id="admin-list" onclick="changeContent('admin')"><i class="fas fa-user"></i> Admin</li>
+                <li id="fun-list" onclick="changeContent('fun')"><i class="fas fa-smile"></i> Fun</li>
+                <li id="reddit-list" onclick="changeContent('reddit')"><i class="fab fa-reddit"></i> Reddit</li>
+                <li id="emotes-list" onclick="changeContent('emotes')"><i class='fas fa-icons'></i> Emotes</li>
+                <li id="crypto-list" onclick="changeContent('crypto')"><i class="fab fa-bitcoin"></i> Crypto</li>
+                <li id="other-list" onclick="changeContent('other')"><i class="far fa-paper-plane"></i> Other</li>
+                
+            </ul>
+        </menu>
+
+        <!-- about -->
+
+        <main class="bot-main" id="about" style="text-align: center;">
+            <div style="border-bottom: 2px solid orange; border-radius: 5px;">
+                <h1 style="padding: 5px;">Welcome to the Generic Bot Name homepage!</h1>
+            </div>
+            <div style="text-align: left; width: 80%; margin: auto;">
+                <h2>You can find here the command list for the bot!</h2>
+                <p>
+                <h4 style="color:orange;"><i class="fa fa-book" aria-hidden="true"></i> Quick command guide</h4>
+                </p>
+                <p>
+                    The command syntax: <span style="color: orange;">prefix</span> <span
+                        style="color: #48E5C2;">CommandName </span> <span style="color: orange;">arguments</span><br><br>
+                    Example: <span style="color: #48E5C2;">_ChangePrefix</span> <span style="color: orange;">!</span><br>
+                </p>
+                <div class="picture-box">
+                    <img class="picture-box-img" src="pics/changeprefix.png" alt="ChangePrefix" />
+                </div>
+                <p>
+                    In Some commands which intentionally take sentence you can skip quotes because they're taking only
+                    one argument<br>
+                    Example: <span style="color: #48E5C2;">!8ball</span> <span style="color: orange;">Is this a good bot?</span>
+                </p>
+                <div class="picture-box">
+                    <img class="picture-box-img" src="pics/8ball.png" alt="DailyRun Example" />
+                </div>
+                <p>
+                    When commands require user as argument you should use @user mention<br>
+                    Example: <span style="color: #48E5C2;">!WhoIs</span> <span
+                        style="color: orange;">@|| 🍌 Banana 🍌||</span>
+                </p>
+                <div class="picture-box">
+                    <img class="picture-box-img" src="pics/Whois.png" alt="DailyRun Example" />
+                </div>
+            </div>
+        </main>
+
+        <!-- Admin -->
+        <div class="bot-main" id="admin">
+            <div class="main-item">
+                <div class="item-command">Clear</div>
+                <div class="item-alias">Alias: purge</div>
+                <div class="item-description">Clear x amount of messages(default 5)<br>Usage: _Clear [number]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Kick</div>
+                <div class="item-alias">Kick user</div>
+                <div class="item-description">Kicks user of the server<br>Usage: _Kick @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">ChangePrefix</div>
+                <div class="item-description">Uploads server specified prefix to database<br>Usage:
+                    _ChangePrefix [Character]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Ban</div>
+                <div class="item-description">Bans user<br>Usage: _Ban @user</div>
+            </div>
+
+            <div class="main-item">
+                <div class="item-command">Mute</div>
+                <div class="item-description">Mute user<br>Usage: _mute @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Unmute</div>
+                <div class="item-description">Unmute user<br>Usage: _unmute @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Unban</div>
+                <div class="item-description">Unban user<br>Usage: _Unban @user</div>
+            </div>
+        </div>
+        <!-- End Admin -->
+        <!-- Fun -->
+        <div class="bot-main" id="fun">
+            <div class="main-item">
+                <div class="item-command">HowGay</div>
+                <div class="item-description">Ask how the bot how gay you are<br>Usage: _HowGay</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">HowThicc</div>
+                <div class="item-description">Ask how the bot how thicc you are<br>Usage: _HowThicc</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Avatar</div>
+                <div class="item-alias">Alias: pfp</div>
+                <div class="item-description">Get the avatar of a user<br>Usage: _Avatar @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Coinflip</div>
+                <div class="item-description">Heads or tails<br>Usage: _coinflip Heads/Tails</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">8ball</div>
+                <div class="item-description">Ask a question to the bot and get an answer<br>Usage: _8ball [question]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">WhoIs</div>
+                <div class="item-description">See the information of a user<br>Usage: _Whois @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Meme</div>
+                <div class="item-description">Sends a meme to the channel<br>Usage: _Meme</div>
+            </div>
+        </div>
+        <!-- End Fun -->
+        <!-- Reddit -->
+        <div class="bot-main" id="reddit">
+            <div class="main-item">
+                <div class="item-command">User</div>
+                <div class="item-alias">Alias: _U</div>
+                <div class="item-description">Check a users reddit profile<br>Usage: _User [reddit user name]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Posts</div>
+                <div class="item-alias">Alias: Threads</div>
+                <div class="item-description">See the latest/hottest/controversial/... posts from a subreddit<br>Usage: _Posts [subreddit]</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Random</div>
+                <div class="item-alias">Alias: _r</div>
+                <div class="item-description">Get a image from a subreddit<br>Usage: _random [subreddit (e.g dankmemes)]</div>
+            </div>
+        </div>
+        <!-- End Reddit -->
+        <!-- Other -->
+        <div class="bot-main" id="other">
+            <div class="main-item">
+                <div class="item-command">Ping</div>
+                <div class="item-description">Send PONG and the Users ping<br>Usage: _Ping</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Stats</div>
+                <div class="item-description">See the BOTs stats<br>Usage: _Stats</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Uptime</div>
+                <div class="item-description">Says how long the bot has been online<br>Usage: _Uptime</div>
+            </div>
+
+            <div class="main-item">
+                <div class="item-command">Invite</div>
+                <div class="item-description">Gives the BOT invite link<br>Usage: _Invite</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Support</div>
+                <div class="item-description">BOTs Support Server<br>Usage: _Support</div>
+            </div>
+        </div>
+        <!-- End Other -->
+        <!-- Emotes -->
+        <div class="bot-main" id="emotes">
+            <div class="main-item">
+                <div class="item-command">Slap</div>
+                <div class="item-description">Slap someone<br>Usage: _Slap @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Kiss</div>
+                <div class="item-description">Kiss someone<br>Usage: _Kiss @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Hug</div>
+                <div class="item-description">Hug someone<br>Usage: _Hug @user</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Pat</div>
+                <div class="item-description">Pat someone<br>Usage: _Pat @user</div>
+            </div>
+        </div>   
+        <!-- End Emotes --> 
+        <!-- Crypto -->
+        <div class="bot-main" id="crypto">
+            <div class="main-item">
+                <div class="item-command">Bitcoin</div>
+                <div class="item-alias">Alias: _BTC</div>
+                <div class="item-description">Bitcoin, coin price and change<br>Usage: _BTC</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Ethereum</div>
+                <div class="item-alias">Alias: _ETH</div>
+                <div class="item-description">Ethereum, coin price and change<br>Usage: _ETH</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Bitcoin Cash</div>
+                <div class="item-alias">Alias: _BCH</div>
+                <div class="item-description">Bitcoin Cash, coin price and change<br>Usage: _BCH</div>
+            </div>
+
+            <div class="main-item">
+                <div class="item-command">Tether</div>
+                <div class="item-alias">Alias: _USDT</div>
+                <div class="item-description">Tether, coin price and change<br>Usage: _USDT</div>
+            </div>
+            <div class="main-item">
+                <div class="item-command">Crypto Sports</div>
+                <div class="item-alias">Alias: _CSPN</div>
+                <div class="item-description">Crypto Sports, coin price and change<br>Usage: _CSPN</div>
+            </div>
+            <div class="picture-box">
+                <img class="picture-box-img" src="pics/crypto.png" alt="Crypto" />
+            </div>
+        </div>
+        <!-- End Crypto -->
+    </div>
+</body>
+
+</html>
